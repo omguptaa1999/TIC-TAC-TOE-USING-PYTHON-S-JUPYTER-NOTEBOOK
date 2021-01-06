@@ -1,3 +1,5 @@
+STEP 1. WRITE A FUNCTION THAT CAN PRINT OUT A BOARD AS A LIST, WHERE EACH INDEX 1-9 CORRESPONDS WITH A NUMBER PAD, SO YOU GET A 3*3 BOARD REPRESENTATION.
+
 from IPython.display import clear_output
 
 def display_board(board):
@@ -13,9 +15,15 @@ def display_board(board):
     print('   |   |')
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
     print('   |   |')
+TEST STEP 1
+
 test_board = ['#','X','O','X','O','X','O','X','O','X']
 display_board(test_board)
 display_board(test_board)
+
+
+STEP 2. WRITE A FUNCTION THAT CAN TAKE IN A PLAYER INPUT AND ASSIGN THEIR MARKER AS 'X' OR 'O'. THINK ABOUT USING WHILE LOOPS TO CONTINUALLY ASK UNTIL YOU GET A CORRECT ANSWER.
+
 def player_input():
     
     marker = ''
@@ -31,14 +39,26 @@ def player_input():
         
         return ('O','X')
     
+TEST STEP 2
+
 player1_marker , player2_marker = player_input()
 player2_marker
+
+
+STEP 3. WRITE A FUNCTION THAT TAKES IN THE BOARD LIST OBJECT, A MARKER('X' OR 'O'), AND A DESIRED POSITION (NUMBER 1-9) AND ASSIGNS IT TO THE BOARD.
+
 def place_marker(board, marker, position):
     
     board[position] = marker
+TEST STEP 3
+
 test_board
 place_marker(test_board,'$',8)
 display_board(test_board)
+
+
+STEP 4. WRITE A FUNCTION THAT TAKES IN A BOARD AND A MARK (X OR O) AND THEN CHECKS TO SEE IF THAT MARK HAS WON.
+
 def win_check(board,mark):
     
     return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
@@ -49,7 +69,13 @@ def win_check(board,mark):
     (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
     (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
     (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
+TEST STEP 4
+
 win_check(test_board,'X')
+
+
+step 5. WRITE A FUNCTION THAT USES THE RANDOM MODULE TO RANDOMLYDECIDE WHICH PLAYER GOES FIRST. YOU MAY WANT TO LOOK UP random.randint() RETURN A STRING OF WHICH PLAYER WENT FIRST.
+
 import random
  
 def choose_first():
@@ -63,9 +89,17 @@ def choose_first():
         else:
             
             return 'Player 2'
+
+
+STEP 6. WRITE A FUNCTION THAT RETURNS A BOOLEAN INDICATING WHETHER A SPACE ON THE BOARD IS FREELY AVAILABLE.
+
 def space_check(board, position):
     
     return board[position] == ' '
+
+
+STEP 7. WRITE A FUNCTION THAT CHECKS IF THE BOARD IS FULL AND RETURNS A BOOLEAN VALUE. TRUE IF FULL, FALSE OTHERWISE.
+
 def full_board_check(board):
     
     for i in range(1,10):
@@ -73,6 +107,10 @@ def full_board_check(board):
             
             return False
     return True
+
+
+STEP 8. WRITE A FUNCTION THAT ASKS FOR A PLAYER'S NEXT POSITION (AS A NUMBER 1-9) AND THEN USES THE FUNCTION FROM STEP 6 TO CHECK IF IT'S A FREE POSITION. IF IT IS, THEN RETURN THE POSITION FOR LATER USE.
+
 def player_choice(board):
     
     position = 0
@@ -82,11 +120,19 @@ def player_choice(board):
         position = int(input('Choose a position: (1-9)'))
         
     return position
+
+
+STEP 9. WRITE A FUNCTION THAT ASKS THE PLAYER IF THEY WANT TO PLAY AGAIN AND RETURNS A BOOLEAN TRUE IF THEY WANT TO PLAY AGAIN.
+
 def replay():
     
     choice = input("Play Again? Enter Yes or No")
     
     return choice == 'Yes'
+
+
+STEP 10. HERE COMES THE HARD PART AND THE FINAL ONE CODE!!! USE WHILE LOOPS AND THE FUNCTIONS YOU HAVE MADE TO RUN THE GAME!!! SO HERE WE GO.....
+
 print('Welcome to Tic Tac Toe')
 
 while True:
@@ -150,3 +196,5 @@ while True:
                     
     if not replay():
         break
+ 
+ 
